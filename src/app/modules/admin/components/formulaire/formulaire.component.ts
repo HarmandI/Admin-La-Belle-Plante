@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-formulaire',
@@ -8,7 +8,10 @@ import { FormGroup } from '@angular/forms';
 })
 export class FormulaireComponent implements OnInit {
   plantForm!: FormGroup;
-  constructor() {}
+  @Input()buttonLabel!:String;
+  constructor(private fb : FormBuilder) {
+    this.plantForm = this.fb.group({});
+  }
 
   ngOnInit(): void {}
 
