@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, Subject } from 'rxjs';
+import { map, Observable, Subject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Plant } from '../models/plant';
 
@@ -39,6 +39,11 @@ export class AdminService {
 
   addPlant(plant: Plant): Observable<any> | void {
     return this.httpClient.post(`${this.apiUrl}`, plant);
+  }
+  onClickDelete(id: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.apiUrl}/list_products/${id}`).pipe(
+      tap(() => this.refreshCollection())
+    );
   }
   // getData(): Observable<any[]> {
   //   return this.httpClient.get<any[]>(`${this.apiUrl}/list_products`);

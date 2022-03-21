@@ -23,7 +23,7 @@
       <!-- <td>{{products.Catégorie.}}</td> -->
       <td>{{products.rating}}</td>
       <td><a class="bi-pencil-square" routerLink="../modifier"></a></td>
-      <td class="bi-trash-fill" style="color: red; cursor: pointer;" (click)="onClickDelete(5)"></td>
+      <td class="bi-trash-fill" style="color: red; cursor: pointer;" (click)="onClickDelete(products.id)"></td>
     </tr>
   </tbody>
 </table>
