@@ -14,18 +14,6 @@
     </tr>
   </thead>
   <tbody>
-<<<<<<< HEAD
-    <tr *ngFor="let products of listData">
-      <th scope="row">{{products.id}}</th>
-      <td>{{products.product_name}}</td>
-      <td>{{products.product_price}}</td>
-      <td>{{products.product_qty}}</td>
-      <td>{{products.product_instock}}</td>
-      <td>{{products.product_breadcrumb_label}}</td>
-      <td>{{products.product_rating}}</td>
-      <td><a class="bi-pencil-square" routerLink="../modifier"></a></td>
-      <td class="bi-trash-fill" style="color: red; cursor: pointer;" (click)="onClickDelete(products.id)"></td>
-=======
     <tr *ngFor="let products of collection">
       <th scope="row">{{products.id}}</th>
       <td>{{products.name}}</td>
@@ -35,8 +23,7 @@
       <!-- <td>{{products.Catégorie.}}</td> -->
       <td>{{products.rating}}</td>
       <td><a class="bi-pencil-square" routerLink="../modifier"></a></td>
-      <td class="bi-trash-fill" style="color: red; cursor: pointer;" (click)="onClickDelete(5)"></td>
->>>>>>> main
+      <td class="bi-trash-fill" style="color: red; cursor: pointer;" (click)="onClickDelete(products.id)"></td>
     </tr>
   </tbody>
 </table>
