@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Plant } from '../../models/plant';
 import { AdminService } from '../../services/admin.service';
 
 @Component({
@@ -21,6 +22,9 @@ export class PageTableauComponent implements OnInit {
 
   onClickDelete(id: number){
     console.log(id);
+    this.adminService.onClickDelete(id).subscribe((resp) => {
+      console.log("Suppression successful : ", resp);
+    });
 
   }
 
