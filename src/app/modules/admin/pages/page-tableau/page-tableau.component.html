@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table" *ngIf="subCollection$ | async as collection">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Id</th>
@@ -14,16 +14,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let products of listData">
-      <th scope="row">{{products.product_id}}</th>
-      <td>{{products.product_name}}</td>
-      <td>{{products.product_price}}</td>
-      <td>{{products.product_qty}}</td>
-      <td>{{products.product_instock}}</td>
-      <td>{{products.product_breadcrumb_label}}</td>
-      <td>{{products.product_rating}}</td>
+    <tr *ngFor="let products of collection">
+      <th scope="row">{{products.id}}</th>
+      <td>{{products.name}}</td>
+      <td>{{products.price}}</td>
+      <td>{{products.quantity}}</td>
+      <td>{{products.instock}}</td>
+      <!-- <td>{{products.Catégorie.}}</td> -->
+      <td>{{products.rating}}</td>
       <td><a class="bi-pencil-square" routerLink="../modifier"></a></td>
-      <td class="bi-trash-fill" style="color: red; cursor: pointer;" (click)="onClickDelete(products.product_id)"></td>
+      <td class="bi-trash-fill" style="color: red; cursor: pointer;" (click)="onClickDelete(5)"></td>
     </tr>
   </tbody>
 </table>
