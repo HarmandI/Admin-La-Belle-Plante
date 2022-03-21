@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-page-tableau',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-tableau.component.scss']
 })
 export class PageTableauComponent implements OnInit {
-
-  constructor() { }
+  public listData!: any[];
+  constructor(private adminService: AdminService) { }
 
   ngOnInit(): void {
+    this.listData = [];
+    this.adminService.getData().subscribe(
+      (listPlant: any[]) => {
+        this.listData = listPlant;
+        this.listData.length = 9;
+      })
+  }
+
+  onClickDelete(id: number){
+    console.log(id);
+
   }
 
 }

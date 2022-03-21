@@ -1,1 +1,29 @@
-<p>page-tableau works!</p>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Quantité</th>
+      <th scope="col">En stock</th>
+      <th scope="col">Catégorie</th>
+      <th scope="col">Note</th>
+      <th scope="col">Modifier</th>
+      <th scope="col">Supprimer</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let products of listData">
+      <th scope="row">{{products.product_id}}</th>
+      <td>{{products.product_name}}</td>
+      <td>{{products.product_price}}</td>
+      <td>{{products.product_qty}}</td>
+      <td>{{products.product_instock}}</td>
+      <td>{{products.product_breadcrumb_label}}</td>
+      <td>{{products.product_rating}}</td>
+      <td><a class="bi-pencil-square" routerLink="../modifier"></a></td>
+      <td class="bi-trash-fill" style="color: red; cursor: pointer;" (click)="onClickDelete(products.product_id)"></td>
+    </tr>
+  </tbody>
+</table>
