@@ -21,7 +21,7 @@ export class AdminService {
         //console.log("avant mapping: ", tabObj);
         // Ici grâce à la méthode .map() on transforme tout les objet json du tableau en instance de notre classe Plant()
         return tabObj.map((obj: any) => {
-          return new Plant(obj.product_name, obj.product_price,obj.product_quantity,obj.product_instock,obj.product_breadcrumb_label,obj.product_image_source,obj.product_rating,obj.id);
+          return new Plant(obj.product_name, obj.product_price,obj.product_qty,obj.product_instock,obj.product_breadcrumb_label,obj.product_image_source,obj.product_rating,obj.id);
         })
       }));
     //this.collection$ = this.httpClient.get<Plant[]>(`${this.apiUrl}/list_products`);

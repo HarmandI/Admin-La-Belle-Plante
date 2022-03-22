@@ -19,43 +19,47 @@ import { AdminService } from '../../services/admin.service';
   styleUrls: ['./page-ajouter.component.scss'],
 })
 export class PageAjouterComponent implements OnInit {
-  public plantForm: FormGroup;
-  public isAdd: boolean = false;
   public newplant = new Plant();
 
 
   constructor(private fb: FormBuilder, private router: Router, private adminService: AdminService) {
-    this.plantForm = new FormGroup({});
-    this.isAdd = false;
+
   }
 
   ngOnInit(): void {
 
   }
 
-  public onSubmitted(submittedPlant: Plant): void {
-    const nameValue = this.plantForm.value['nameFC'];
-    const priceValue = this.plantForm.value['priceFc'];
-    const quantityValue = this.plantForm.value['quantityFc'];
-    const inStockValue = this.plantForm.value['inStockFC'];
-    const categoryValue = this.plantForm.value['categotyFC'];
-    const urlPicture: string = 'https//picsum.photos/id/18/200/300';
-    const ratingValue = this.plantForm.value['ratingFc'];
-    const idValue = this.plantForm.value[''];
+  public addPlant(plant: any): void {
+    const nameValue = plant.nameFc;
+    const priceValue = plant.priceFc;
+    const ratingValue = plant.ratingFc;
+    const quantityValue = plant.quantityFc;
+    const categoryValue = plant.categoryFc;
+    const inStockValue = plant.inStockFc;
 
-    const plant : Plant = {
+    const plante: any = {
       product_name: nameValue,
       product_price: priceValue,
       product_qty: quantityValue,
-      product_instock: [inStockValue],
-      product_breadcrumb_label: [categoryValue],
-      product_url_picture: 'https//picsum.photos/id/18/200/300',
       product_rating: ratingValue,
-      id: idValue,
+      product_breadcrumb_label: categoryValue,
+      product_instock: [inStockValue],
+      product_url_picture : "https//picsum.photos/id/18/200/300",
+      product_discount_code : "",
+      product_color: "",
+      product_unitprice_ati: "",
+      product_unitprice_tf: "",
+      product_discount_tf: "",
+      product_discount_ati: "",
+      product_url_page: "",
+      product_shipping_method: null,
+      product_image_source: "",
+      product_seller: "market place",
+      product_web_only: "non"
     };
-    console.log("coco",plant);
 
-    this.adminService.addPlant(submittedPlant)?.subscribe((resp)=>{
+    this.adminService.addPlant(plante)?.subscribe((resp)=>{
     })
     this.router.navigate(['admin']);
   }
