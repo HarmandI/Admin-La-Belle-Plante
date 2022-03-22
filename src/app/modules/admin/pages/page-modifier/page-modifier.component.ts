@@ -48,7 +48,7 @@ export class PageModifierComponent implements OnInit {
       quantity: [plant ? plant.quantity : ''],
       category: [plant ? plant.category : ''],
       rating: [plant ? plant.rating : ''],
-      inStock: [plant ? plant.instock : ['']],
+      inStock: [plant ? plant.inStock : ['']],
     });
   }
 
@@ -70,7 +70,7 @@ export class PageModifierComponent implements OnInit {
       quantity: quantityValue,
       rating: ratingValue,
       category: categoryValue,
-      instock: [inStockValue],
+      inStock: [inStockValue],
       urlPicture
     };
     this.adminService.updatePlant(plant)?.subscribe((resp) => {
