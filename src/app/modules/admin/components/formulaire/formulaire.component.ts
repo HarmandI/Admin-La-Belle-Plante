@@ -10,8 +10,8 @@ import { AdminService } from '../../services/admin.service';
 })
 export class FormulaireComponent implements OnInit {
   plantForm!: FormGroup;
+
   @Input() plantInfos!: Plant;
-  @Input() isAdd : boolean = true;
   @Input()buttonLabel!:String;
   constructor(private fb : FormBuilder, private adminService: AdminService) {
 
@@ -28,6 +28,10 @@ export class FormulaireComponent implements OnInit {
     });
   }
 
-  onSubmit(){}
+  
+
+  addPlant(){}
+
+  updatePlant(){}
 }
 

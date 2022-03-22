@@ -48,4 +48,13 @@ export class AdminService {
   // getData(): Observable<any[]> {
   //   return this.httpClient.get<any[]>(`${this.apiUrl}/list_products`);
   // }
+
+   /** Récupérer une plante par son Id **/
+  getPlantById(id: any): Observable<Plant> {
+    return this.httpClient.get<Plant>(`${this.apiUrl}/list_products/${id}`);
+  }
+  /** Modifier Plante **/
+  updatePlant(plant: Plant): Observable<any> {
+    return this.httpClient.put(`${this.apiUrl}/list_products/${plant.id}`, plant);
+  }
 }

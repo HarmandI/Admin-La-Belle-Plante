@@ -1,101 +1,104 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="plantForm">
-  <div class="form-floating">
-    <input
-      type="text"
-      class="form-control"
-      id="floatingInputName"
-      placeholder=""
-      name="name"
-      formControlName="nameFc"
-      [ngClass]="{
-        'is-valid': plantForm.controls['nameFc'].valid,
-        'is-invalid': !plantForm.controls['nameFc'].valid
-      }"
-    />
-    <label for="floatingInputName">Nom</label>
-  </div>
-  <div class="form-floating">
-    <input
-      type="text"
-      class="form-control"
-      id="floatingInputPrice"
-      placeholder=""
-      name="price"
-      formControlName="priceFc"
-      [ngClass]="{
-        'is-valid': plantForm.controls['priceFc'].valid,
-        'is-invalid': !plantForm.controls['priceFc'].valid
-      }"
-    />
-    <label for="floatingInputPrice">Prix</label>
-  </div>
-  <div class="form-floating">
-    <input
-      type="number"
-      class="form-control"
-      id="floatingInputQuantity"
-      placeholder=""
-      name="quantity"
-      formControlName="quantityFc"
-      [ngClass]="{
-        'is-valid': plantForm.controls['quantityFc'].valid,
-        'is-invalid': !plantForm.controls['quantityFc'].valid
-      }"
-    />
-    <label for="floatingInputQuantity">Quantité</label>
-    </div>
-    <div class="form-floating select">
-      <select
-        class="form-control"
-        id="floatingInputCategory"
-        placeholder=""
-        name="category"
-        formControlName="categoryFc"
-      >
-        <option value="plantes fleuries">Plantes fleuries</option>
-        <option value="orchides">Orchidées</option>
-        <option value="cactus et plantes grasses">Cactus et plantes grasses</option>
-        <option value="bonsas">Bonsas</option>
-        <option value="plantes vertes">Plantes vertes</option>
-        <option value="palmier dintrieur">Palmier d'intérieur</option>
-      </select>
-      <label value="category">Sélectionnez catégorie</label>
-    </div>
-  <div class="form-floating">
-    <input
-      type="number"
-      class="form-control"
-      id="floatingRating"
-      placeholder=""
-      name="rating"
-      formControlName="ratingFc"
-      [ngClass]="{
-        'is-valid': plantForm.controls['ratingFc'].valid,
-        'is-invalid': !plantForm.controls['ratingFc'].valid
-      }"
-    />
-    <label for="floatingRating">Note</label>
-  </div>
-  <div class="form-floating select">
-    <select
-      class="form-control"
-      id="floatingInputInStock"
-      placeholder=""
-      name="inStock"
-      formControlName="inStockFc"
-    >
-      <option value="disponible">Disponible</option>
-      <option value="partiellement disponible">Partiellement disponible</option>
-      <option value="non disponible">Non disponible</option>
-    </select>
-    <label value="disponible">Sélectionnez disponibilité</label>
-  </div>
+<div class="form-plant">
+      <form (ngSubmit)="onSubmit()" [formGroup]="plantForm">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInputName"
+            placeholder=""
+            name="name"
+            formControlName="nameFc"
+            [ngClass]="{
+              'is-valid': plantForm.controls['nameFc'].valid,
+              'is-invalid': !plantForm.controls['nameFc'].valid
+            }"
+          />
+          <label for="floatingInputName">Nom</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInputPrice"
+            placeholder=""
+            name="price"
+            formControlName="priceFc"
+            [ngClass]="{
+              'is-valid': plantForm.controls['priceFc'].valid,
+              'is-invalid': !plantForm.controls['priceFc'].valid
+            }"
+          />
+          <label for="floatingInputPrice">Prix</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="number"
+            class="form-control"
+            id="floatingInputQuantity"
+            placeholder=""
+            name="quantity"
+            formControlName="quantityFc"
+            [ngClass]="{
+              'is-valid': plantForm.controls['quantityFc'].valid,
+              'is-invalid': !plantForm.controls['quantityFc'].valid
+            }"
+          />
+          <label for="floatingInputQuantity">Quantité</label>
+          </div>
+          <div class="form-floating select">
+            <select
+              class="form-control"
+              id="floatingInputCategory"
+              placeholder=""
+              name="category"
+              formControlName="categoryFc"
+            >
+              <option value="plantes fleuries">Plantes fleuries</option>
+              <option value="orchides">Orchidées</option>
+              <option value="cactus et plantes grasses">Cactus et plantes grasses</option>
+              <option value="bonsas">Bonsas</option>
+              <option value="plantes vertes">Plantes vertes</option>
+              <option value="palmier dintrieur">Palmier d'intérieur</option>
+            </select>
+            <label value="category">Sélectionnez catégorie</label>
+          </div>
+        <div class="form-floating">
+          <input
+            type="number"
+            class="form-control"
+            id="floatingRating"
+            placeholder=""
+            name="rating"
+            formControlName="ratingFc"
+            [ngClass]="{
+              'is-valid': plantForm.controls['ratingFc'].valid,
+              'is-invalid': !plantForm.controls['ratingFc'].valid
+            }"
+          />
+          <label for="floatingRating">Note</label>
+        </div>
+        <div class="form-floating select">
+          <select
+            class="form-control"
+            id="floatingInputInStock"
+            placeholder=""
+            name="inStock"
+            formControlName="inStockFc"
+          >
+            <option value="disponible">Disponible</option>
+            <option value="partiellement disponible">Partiellement disponible</option>
+            <option value="non disponible">Non disponible</option>
+          </select>
+          <label value="disponible">Sélectionnez disponibilité</label>
+        </div>
 
-  <button
-    class="w-100 btn btn-lg btn-outline-success"
-    type="submit"
-    [disabled]="plantForm.invalid"
-  >
-    {{ buttonLabel }}
-  </button>
-</form>
+        <button
+          class="w-100 btn btn-lg btn-outline-success"
+          type="submit"
+          [disabled]="plantForm.invalid"
+        >
+          {{ buttonLabel }}
+        </button>
+      </form>
+</div>
+
