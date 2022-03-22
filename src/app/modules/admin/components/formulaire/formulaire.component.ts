@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Plant } from '../../models/plant';
-import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-formulaire',
@@ -10,14 +9,15 @@ import { AdminService } from '../../services/admin.service';
 })
 export class FormulaireComponent implements OnInit {
   plantForm!: FormGroup;
-
-  @Input() plantInfos!: Plant;
   @Input()buttonLabel!:String;
-  constructor(private fb : FormBuilder, private adminService: AdminService) {
+  @Input() plantInfos!: Plant;
+  @Output() submitted = new EventEmitter();
 
+  constructor(private fb : FormBuilder) {
   }
 
   ngOnInit(): void {
+    console.log(this.plantInfos);
     this.plantForm = this.fb.group({
       nameFc: new FormControl(this.plantInfos.name, [Validators.required]),
       priceFc: new FormControl(this.plantInfos.price, [Validators.required]),
@@ -28,10 +28,9 @@ export class FormulaireComponent implements OnInit {
     });
   }
 
-  
+  onSubmit(){
+    this.submitted.emit(this.plantForm.value)
+  }
 
-  addPlant(){}
-
-  updatePlant(){}
 }
 
