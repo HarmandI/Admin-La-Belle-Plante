@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Plant } from '../../models/plant';
-import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-formulaire',
@@ -10,28 +9,28 @@ import { AdminService } from '../../services/admin.service';
 })
 export class FormulaireComponent implements OnInit {
   plantForm!: FormGroup;
-
-  @Input() plantInfos!: Plant;
   @Input()buttonLabel!:String;
-  constructor(private fb : FormBuilder, private adminService: AdminService) {
+  @Input() plantInfos!: any;
+  @Output() submitted = new EventEmitter();
 
+  constructor(private fb : FormBuilder) {
   }
 
   ngOnInit(): void {
+    console.log(this.plantInfos);
     this.plantForm = this.fb.group({
-      nameFc: new FormControl(this.plantInfos.name, [Validators.required]),
-      priceFc: new FormControl(this.plantInfos.price, [Validators.required]),
-      quantityFc: new FormControl(this.plantInfos.quantity, [Validators.required]),
-      inStockFc: new FormControl(this.plantInfos.inStock, [Validators.required]),
-      categoryFc: new FormControl(this.plantInfos.category, [Validators.required]),
-      ratingFc: new FormControl(this.plantInfos.rating, [Validators.required]),
+      nameFc: new FormControl(this.plantInfos.product_name, [Validators.required]),
+      priceFc: new FormControl(this.plantInfos.product_price, [Validators.required]),
+      quantityFc: new FormControl(this.plantInfos.product_qty, [Validators.required]),
+      inStockFc: new FormControl(this.plantInfos.product_instock, [Validators.required]),
+      categoryFc: new FormControl(this.plantInfos.product_breadcrumb_label, [Validators.required]),
+      ratingFc: new FormControl(this.plantInfos.product_rating, [Validators.required]),
     });
   }
 
-  
+  onSubmit(){
+    this.submitted.emit(this.plantForm.value)
+  }
 
-  addPlant(){}
-
-  updatePlant(){}
 }
 
