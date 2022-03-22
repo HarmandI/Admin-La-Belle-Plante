@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Plant } from '../models/plant';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdminService {
   public collection$!: Observable<Plant[]>;
@@ -37,6 +37,9 @@ export class AdminService {
     })
   }
 
+  addPlant(plant: Plant): Observable<any> | void {
+    return this.httpClient.post(`${this.apiUrl}`, plant);
+  }
   onClickDelete(id: number): Observable<any> {
     return this.httpClient.delete<any>(`${this.apiUrl}/list_products/${id}`).pipe(
       tap(() => this.refreshCollection())

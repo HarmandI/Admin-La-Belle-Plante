@@ -10,23 +10,25 @@ import { AdminService } from '../../services/admin.service';
 })
 export class FormulaireComponent implements OnInit {
   plantForm!: FormGroup;
-  @Input() buttonLabel!: string;
-  @Input() plantInfos: any;
-  @Input() isAdd : boolean = true;
 
-  constructor(private formBuilder: FormBuilder) {}
+  @Input() plantInfos!: Plant;
+  @Input()buttonLabel!:String;
+  constructor(private fb : FormBuilder, private adminService: AdminService) {
+
+  }
 
   ngOnInit(): void {
-    this.plantForm = this.formBuilder.group(
-      {
-        nameFc: new FormControl(this.plantInfos.product_name, [Validators.required]),
-        priceFc: new FormControl(this.plantInfos.product_price, [Validators.required]),
-        quantityFc: new FormControl(this.plantInfos.product_quantity, [Validators.required]),
-        inStockFc: new FormControl(this.plantInfos.product_instock, [Validators.required]),
-        categoryFc: new FormControl(this.plantInfos.product_breadcrumb_label, [Validators.required]),
-        ratingFc: new FormControl(this.plantInfos.product_rating, [Validators.required]),
-      });
+    this.plantForm = this.fb.group({
+      nameFc: new FormControl(this.plantInfos.name, [Validators.required]),
+      priceFc: new FormControl(this.plantInfos.price, [Validators.required]),
+      quantityFc: new FormControl(this.plantInfos.quantity, [Validators.required]),
+      inStockFc: new FormControl(this.plantInfos.inStock, [Validators.required]),
+      categoryFc: new FormControl(this.plantInfos.category, [Validators.required]),
+      ratingFc: new FormControl(this.plantInfos.rating, [Validators.required]),
+    });
   }
+
+  
 
   addPlant(){}
 
