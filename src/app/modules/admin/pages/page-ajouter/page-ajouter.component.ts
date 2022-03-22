@@ -21,6 +21,7 @@ import { AdminService } from '../../services/admin.service';
 export class PageAjouterComponent implements OnInit {
   public plantForm: FormGroup;
   public isAdd: boolean = false;
+  public newplant = new Plant();
 
 
   constructor(private fb: FormBuilder, private router: Router, private adminService: AdminService) {
@@ -32,7 +33,7 @@ export class PageAjouterComponent implements OnInit {
 
   }
 
-  public onSubmit(): void {
+  public onSubmitted(submittedPlant: Plant): void {
     const nameValue = this.plantForm.value['nameFC'];
     const priceValue = this.plantForm.value['priceFc'];
     const quantityValue = this.plantForm.value['quantityFc'];
@@ -43,18 +44,18 @@ export class PageAjouterComponent implements OnInit {
     const idValue = this.plantForm.value[''];
 
     const plant : Plant = {
-      name: nameValue,
-      price: priceValue,
-      quantity: quantityValue,
-      inStock: [inStockValue],
-      category: [categoryValue],
-      urlPicture: 'https//picsum.photos/id/18/200/300',
-      rating: ratingValue,
+      product_name: nameValue,
+      product_price: priceValue,
+      product_qty: quantityValue,
+      product_instock: [inStockValue],
+      product_breadcrumb_label: [categoryValue],
+      product_url_picture: 'https//picsum.photos/id/18/200/300',
+      product_rating: ratingValue,
       id: idValue,
     };
     console.log("coco",plant);
 
-    this.adminService.addPlant(plant)?.subscribe((resp)=>{
+    this.adminService.addPlant(submittedPlant)?.subscribe((resp)=>{
     })
     this.router.navigate(['admin']);
   }

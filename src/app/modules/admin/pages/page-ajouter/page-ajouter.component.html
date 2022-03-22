@@ -1,2 +1,2 @@
 <h1>Ajouter une plante</h1>
-<app-formulaire [buttonLabel]="'Ajouter une plante'"></app-formulaire>
+<app-formulaire (submitted)="onSubmitted($event)" [buttonLabel]="'Ajouter une plante'"></app-formulaire>

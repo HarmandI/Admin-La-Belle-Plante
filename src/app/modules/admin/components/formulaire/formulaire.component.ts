@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Plant } from '../../models/plant';
 import { AdminService } from '../../services/admin.service';
@@ -13,6 +13,7 @@ export class FormulaireComponent implements OnInit {
 
   @Input() plantInfos!: Plant;
   @Input()buttonLabel!:String;
+  @Output()submitted= new EventEmitter<Plant>();
   constructor(private fb : FormBuilder, private adminService: AdminService) {
 
   }
@@ -28,10 +29,12 @@ export class FormulaireComponent implements OnInit {
     });
   }
 
-  
+  public onSubmit(): void {
+    this.submitted.emit(this.plantForm.value);
+  }
+}
 
-  addPlant(){}
-
-  updatePlant(){}
+function newEventEmitter() {
+  throw new Error('Function not implemented.');
 }
 
