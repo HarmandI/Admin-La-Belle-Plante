@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder,FormGroup} from '@angular/forms';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Plant } from '../../models/plant';
 import { AdminService } from '../../services/admin.service';
 
@@ -10,10 +10,8 @@ import { AdminService } from '../../services/admin.service';
   styleUrls: ['./page-modifier.component.scss']
 })
 export class PageModifierComponent implements OnInit {
-  plantForm: FormGroup;
-  updatePlantForm: FormGroup;
-  plantInfos: any;
-  plantId: any;
+  editPlant!: Plant;
+  plantId!: string;
 
 
 
@@ -21,59 +19,62 @@ export class PageModifierComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private route: ActivatedRoute) {
-    this.updatePlantForm = new FormGroup({});
-    this.plantForm = this.initForm();
   }
 
   ngOnInit(): void {
-    /** Pour récuperer l'id de la plante à modifier **/
-    this.plantId = this.route.snapshot.paramMap.get('id');
+    /** Pour récuperer l'id de la plante à modifier et appel Api**/
+    this.route.paramMap.subscribe((params : ParamMap) => {
+      const id = params.get('id')
+      if( id != null){
+        this.plantId = id;
+        //console.log(this.plantId);
 
-    /** Appel Api **/
-    this.adminService
-      .getPlantById(this.plantId)
-      .subscribe((plantInfos: any) => {
-        this.plantInfos = plantInfos;
-        console.log(this.plantInfos);
-        console.log(this.plantInfos.product_name);
-      });
-  }
-
-  /** Méthode qui initialise les champs du formulaire avec les infos du db Json **/
-  private initForm(plant?: Plant): FormGroup {
-
-    return this.fb.group({
-      nom:[plant ? plant.name : ''],
-      price: [plant ? plant.price : ''],
-      quantity: [plant ? plant.quantity : ''],
-      category: [plant ? plant.category : ''],
-      rating: [plant ? plant.rating : ''],
-      inStock: [plant ? plant.inStock : ['']],
+        this.adminService
+        .getPlantById(this.plantId)
+        .subscribe((plantData: any) => {
+          this.editPlant = plantData;
+          //console.log(this.editPlant);
+          //console.log(this.editPlant.name);
+        });
+      }
     });
+
   }
+
 
 
   /** Méthode qui envoie les champs modifiés pour mise à jour **/
-  public onSubmit(): void {
-    const nameValue = this.updatePlantForm.value['nameFc'];
-    const priceValue = this.updatePlantForm.value['priceFc'];
-    const ratingValue = this.updatePlantForm.value['ratingFc'];
-    const quantityValue = this.updatePlantForm.value['quantityFc'];
-    const categoryValue = this.updatePlantForm.value['categoryFc'];
-    const inStockValue = this.updatePlantForm.value['inStockFc'];
-    const urlPicture = "https//picsum.photos/id/18/200/300";
+  public update(plant: any): void {
+    //console.log(plant);
+    const nameValue = plant.nameFc;
+    const priceValue = plant.priceFc;
+    const ratingValue = plant.ratingFc;
+    const quantityValue = plant.quantityFc;
+    const categoryValue = plant.categoryFc;
+    const inStockValue = plant.inStockFc;
 
-    const plant: Plant = {
+    const plante: any = {
       id: this.plantId,
-      name: nameValue,
-      price: priceValue,
-      quantity: quantityValue,
-      rating: ratingValue,
-      category: categoryValue,
-      inStock: [inStockValue],
-      urlPicture
+      product_name: nameValue,
+      product_price: priceValue,
+      product_qty: quantityValue,
+      product_rating: ratingValue,
+      product_breadcrumb_label: categoryValue,
+      product_instock: [inStockValue],
+      product_url_picture : "https//picsum.photos/id/18/200/300",
+      product_discount_code : "",
+      product_color: "",
+      product_unitprice_ati: "",
+      product_unitprice_tf: "",
+      product_discount_tf: "",
+      product_discount_ati: "",
+      product_url_page: "",
+      product_shipping_method: null,
+      product_image_source: "",
+      product_seller: "market place",
+      product_web_only: "non"
     };
-    this.adminService.updatePlant(plant)?.subscribe((resp) => {
+    this.adminService.updatePlant(plante)?.subscribe((resp) => {
       this.router.navigate(['admin']);
     });
   }

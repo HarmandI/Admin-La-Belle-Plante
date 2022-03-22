@@ -9,6 +9,6 @@ export class Plant {
     public category:string[]=['plantes fleuries','orchides','cactus et plantes grasses','bonsas','plantes vertes','palmier dintrieur'],
     public urlPicture: string = "https//picsum.photos/id/18/200/300",
     public rating: number = 0,
-    public id?: number
+    public id?: string
   ){}
 }
