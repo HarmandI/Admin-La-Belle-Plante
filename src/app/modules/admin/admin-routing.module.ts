@@ -6,7 +6,7 @@ import { PageTableauComponent } from './pages/page-tableau/page-tableau.componen
 
 const routes: Routes = [
   { path: '', redirectTo: 'tableau', pathMatch: 'full'},
-  { path: 'modifier', component: PageModifierComponent },
+  { path: 'modifier/:id', component: PageModifierComponent },
   { path: 'ajouter', component: PageAjouterComponent },
   { path: 'tableau', component: PageTableauComponent },
 ];
