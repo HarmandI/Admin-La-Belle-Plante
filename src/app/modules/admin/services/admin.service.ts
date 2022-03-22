@@ -38,7 +38,7 @@ export class AdminService {
   }
 
   addPlant(plant: Plant): Observable<any> | void {
-    return this.httpClient.post(`${this.apiUrl}`, plant);
+    return this.httpClient.post(`${this.apiUrl}/list_products`, plant);
   }
   onClickDelete(id: number): Observable<any> {
     return this.httpClient.delete<any>(`${this.apiUrl}/list_products/${id}`).pipe(
