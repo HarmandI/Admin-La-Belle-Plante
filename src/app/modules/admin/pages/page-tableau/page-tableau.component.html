@@ -1,30 +1,35 @@
-<table class="table" *ngIf="subCollection$ | async as collection">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Nom</th>
-      <th scope="col">Prix</th>
-      <th scope="col">Quantité</th>
-      <th scope="col">En stock</th>
-      <th scope="col">Catégorie</th>
-      <th scope="col">Note</th>
-      <th scope="col">Modifier</th>
-      <th scope="col">Supprimer</th>
+<div id="container">
+  <div id="button">
+    <button class="w-100 btn btn-lg btn-outline-success" routerLink="../ajouter">Ajouter une plante </button>
+  </div>
+  <table class="table" *ngIf="subCollection$ | async as collection">
+    <thead class="thead-dark" style="background-color: #306340 ; color:#f3f7f4 ;">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">En stock</th>
+        <th scope="col">Catégorie</th>
+        <th scope="col">Note</th>
+        <th scope="col">Modifier</th>
+        <th scope="col">Supprimer</th>
 
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let products of collection">
-      <th scope="row">{{products.id}}</th>
-      <td>{{products.name}}</td>
-      <td>{{products.price}}</td>
-      <td>{{products.quantity}}</td>
-      <td>{{products.inStock}}</td>
-      <td>{{products.category}}</td>
-      <td>{{products.rating}}</td>
-      <td><a class="bi-pencil-square" routerLink="../modifier/{{products.id}}"></a></td>
-      <td class="bi-trash-fill" style="color: red; cursor: pointer;" (click)="onClickDelete(products.id)"></td>
-    </tr>
-  </tbody>
-</table>
-<button routerLink="../ajouter">Ajouter une plante </button>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let products of collection">
+        <td>{{products.id}}</td>
+        <td>{{products.name}}</td>
+        <td>{{products.price}}</td>
+        <td>{{products.quantity}}</td>
+        <td>{{products.inStock}}</td>
+        <td>{{products.category}}</td>
+        <td>{{products.rating}}</td>
+        <td><a class="bi-pencil-square" style="color: #5472b1;" routerLink="../modifier/{{products.id}}"></a></td>
+        <td class="bi-trash-fill" style="color: rgb(231, 73, 73); cursor: pointer;" (click)="onClickDelete(products.id)"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
