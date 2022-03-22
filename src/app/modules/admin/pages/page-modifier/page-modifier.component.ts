@@ -27,14 +27,14 @@ export class PageModifierComponent implements OnInit {
       const id = params.get('id')
       if( id != null){
         this.plantId = id;
-        console.log(this.plantId);
+        //console.log(this.plantId);
 
         this.adminService
         .getPlantById(this.plantId)
         .subscribe((plantData: any) => {
           this.editPlant = plantData;
-          console.log(this.editPlant);
-          console.log(this.editPlant.name);
+          //console.log(this.editPlant);
+          //console.log(this.editPlant.name);
         });
       }
     });
@@ -44,29 +44,39 @@ export class PageModifierComponent implements OnInit {
 
 
   /** Méthode qui envoie les champs modifiés pour mise à jour **/
-  public update(event: any): void {
-    console.log(event);
-    // const nameValue = this.updatePlantForm.value['nameFc'];
-    // const priceValue = this.updatePlantForm.value['priceFc'];
-    // const ratingValue = this.updatePlantForm.value['ratingFc'];
-    // const quantityValue = this.updatePlantForm.value['quantityFc'];
-    // const categoryValue = this.updatePlantForm.value['categoryFc'];
-    // const inStockValue = this.updatePlantForm.value['inStockFc'];
-    // const urlPicture = "https//picsum.photos/id/18/200/300";
+  public update(plant: any): void {
+    //console.log(plant);
+    const nameValue = plant.nameFc;
+    const priceValue = plant.priceFc;
+    const ratingValue = plant.ratingFc;
+    const quantityValue = plant.quantityFc;
+    const categoryValue = plant.categoryFc;
+    const inStockValue = plant.inStockFc;
 
-    // const plant: Plant = {
-    //   id: this.plantId,
-    //   name: nameValue,
-    //   price: priceValue,
-    //   quantity: quantityValue,
-    //   rating: ratingValue,
-    //   category: categoryValue,
-    //   inStock: [inStockValue],
-    //   urlPicture
-    // };
-    // this.adminService.updatePlant(plant)?.subscribe((resp) => {
-    //   this.router.navigate(['admin']);
-    // });
+    const plante: any = {
+      id: this.plantId,
+      product_name: nameValue,
+      product_price: priceValue,
+      product_qty: quantityValue,
+      product_rating: ratingValue,
+      product_breadcrumb_label: categoryValue,
+      product_instock: [inStockValue],
+      product_url_picture : "https//picsum.photos/id/18/200/300",
+      product_discount_code : "",
+      product_color: "",
+      product_unitprice_ati: "",
+      product_unitprice_tf: "",
+      product_discount_tf: "",
+      product_discount_ati: "",
+      product_url_page: "",
+      product_shipping_method: null,
+      product_image_source: "",
+      product_seller: "market place",
+      product_web_only: "non"
+    };
+    this.adminService.updatePlant(plante)?.subscribe((resp) => {
+      this.router.navigate(['admin']);
+    });
   }
 
 }
