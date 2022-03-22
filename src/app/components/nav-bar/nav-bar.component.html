@@ -1,12 +1,12 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light shadow ">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">🪴 La Belle Plante</a>
-        <button class="navbar-toggler" 
-            type="button" 
-            data-bs-toggle="collapse" 
+        <button class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
             data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" 
-            aria-expanded="false" 
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,6 +21,7 @@
                 <a class="nav-link disabled" *ngIf="likeCounter == 0"> Pas de plante likée</a>
                 <a class="nav-link disabled" *ngIf="likeCounter == 1">Plante likée : {{ likeCounter }}</a>
                 <a class="nav-link disabled" *ngIf="likeCounter > 1">Plantes likées : {{ likeCounter }}</a>
+                <a routerLink="admin" routerLinkActive="active-custom" class="nav-link">Page administrateur</a>
             </div>
         </div>
     </div>
