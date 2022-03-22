@@ -28,8 +28,7 @@ export class PageTableauComponent implements OnInit {
     //   })
   }
 
-  onClickDelete(id: any){
-    console.log(id);
+  onClickDelete(id: string){
     this.adminService.onClickDelete(id).subscribe((resp) => {
       console.log("Suppression successful : ", resp);
     });
