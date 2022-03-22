@@ -17,11 +17,11 @@
                 <a routerLink="account/signin" routerLinkActive="active-custom" class="nav-link">Se connecter</a>
                 <a routerLink="account/user" routerLinkActive="active-custom" class="nav-link">Mon compte</a>
                 <a class="nav-link">Panier</a>
-                <a routerLink="admin" routerLinkActive="active-custom" class="nav-link">Admin</a>
                 <a class="nav-link disabled">Plus d'option bientôt</a>
                 <a class="nav-link disabled" *ngIf="likeCounter == 0"> Pas de plante likée</a>
                 <a class="nav-link disabled" *ngIf="likeCounter == 1">Plante likée : {{ likeCounter }}</a>
                 <a class="nav-link disabled" *ngIf="likeCounter > 1">Plantes likées : {{ likeCounter }}</a>
+                <a routerLink="admin" routerLinkActive="active-custom" class="nav-link">Page administrateur</a>
             </div>
         </div>
     </div>
