@@ -20,28 +20,24 @@ import { AdminService } from '../../services/admin.service';
 })
 export class PageAjouterComponent implements OnInit {
   public plantForm: FormGroup;
+  public isAdd: boolean = false;
+
 
   constructor(private fb: FormBuilder, private router: Router, private adminService: AdminService) {
     this.plantForm = new FormGroup({});
+    this.isAdd = false;
   }
 
   ngOnInit(): void {
-    this.plantForm = this.fb.group({
-      nameFC: new FormControl('', [Validators.required]),
-      priceFc: new FormControl('', [Validators.required]),
-      quantityFc: new FormControl('', [Validators.required]),
-      categoryFc: new FormControl('', [Validators.required]),
-      ratingFc: new FormControl('', [Validators.required]),
-      inStockFc: new FormControl('', []),
-    });
+
   }
 
   public onSubmit(): void {
     const nameValue = this.plantForm.value['nameFC'];
     const priceValue = this.plantForm.value['priceFc'];
     const quantityValue = this.plantForm.value['quantityFc'];
-    const inStockValue = this.plantForm.value['categoryFc'];
-    const categoryValue = this.plantForm.value[''];
+    const inStockValue = this.plantForm.value['inStockFC'];
+    const categoryValue = this.plantForm.value['categotyFC'];
     const urlPicture: string = 'https//picsum.photos/id/18/200/300';
     const ratingValue = this.plantForm.value['ratingFc'];
     const idValue = this.plantForm.value[''];
@@ -51,12 +47,12 @@ export class PageAjouterComponent implements OnInit {
       price: priceValue,
       quantity: quantityValue,
       inStock: [inStockValue],
-      category: categoryValue,
+      category: [categoryValue],
       urlPicture: 'https//picsum.photos/id/18/200/300',
       rating: ratingValue,
       id: idValue,
     };
-    console.log(plant);
+    console.log("coco",plant);
 
     this.adminService.addPlant(plant)?.subscribe((resp)=>{
     })

@@ -19,12 +19,12 @@
       <td>{{products.name}}</td>
       <td>{{products.price}}</td>
       <td>{{products.quantity}}</td>
-      <td>{{products.instock}}</td>
-      <!-- <td>{{products.Catégorie.}}</td> -->
+      <td>{{products.inStock}}</td>
+      <td>{{products.category}}</td>
       <td>{{products.rating}}</td>
       <td><a class="bi-pencil-square" routerLink="../modifier"></a></td>
       <td class="bi-trash-fill" style="color: red; cursor: pointer;" (click)="onClickDelete(products.id)"></td>
     </tr>
   </tbody>
 </table>
-<button>Ajouter une plante</button>
+<button routerLink="../ajouter">Ajouter une plante </button>

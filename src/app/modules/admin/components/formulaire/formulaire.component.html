@@ -43,22 +43,24 @@
       }"
     />
     <label for="floatingInputQuantity">Quantité</label>
-  </div>
-  <div class="form-floating">
-    <input
-      type="text"
-      class="form-control"
-      id="floatingCategory"
-      placeholder=""
-      name="category"
-      formControlName="categoryFc"
-      [ngClass]="{
-        'is-valid': plantForm.controls['categoryFc'].valid,
-        'is-invalid': !plantForm.controls['categoryFc'].valid
-      }"
-    />
-    <label for="floatingInputCategory">Catégorie</label>
-  </div>
+    </div>
+    <div class="form-floating select">
+      <select
+        class="form-control"
+        id="floatingInputCategory"
+        placeholder=""
+        name="category"
+        formControlName="categoryFc"
+      >
+        <option value="plantes fleuries">Plantes fleuries</option>
+        <option value="orchides">Orchidées</option>
+        <option value="cactus et plantes grasses">Cactus et plantes grasses</option>
+        <option value="bonsas">Bonsas</option>
+        <option value="plantes vertes">Plantes vertes</option>
+        <option value="palmier dintrieur">Palmier d'intérieur</option>
+      </select>
+      <label value="category">Sélectionnez catégorie</label>
+    </div>
   <div class="form-floating">
     <input
       type="number"
