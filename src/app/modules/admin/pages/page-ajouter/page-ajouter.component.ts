@@ -60,7 +60,8 @@ export class PageAjouterComponent implements OnInit {
     };
 
     this.adminService.addPlant(plante)?.subscribe((resp)=>{
+      this.router.navigate(['admin']);
     })
-    this.router.navigate(['admin']);
+
   }
 }
